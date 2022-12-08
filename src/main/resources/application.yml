@@ -59,10 +59,20 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
-#        use_sql_comments: true
-
-hibernate:
-  event:
-    merge:
-      entity_copy_observer: allow
-
+        # use_sql_comments: true
+        event:
+          merge:
+            entity_copy_observer: allow
+  kafka:
+    bootstrap-servers: 192.168.43.227:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: false
+    listener:
+      ack-mode: manual
+      type: batch
+      concurrency: 2
