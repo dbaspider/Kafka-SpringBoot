@@ -19,7 +19,7 @@ mybatis-plus:
   type-aliases-package: org.springblade.**.entity,org.springblade.core.mp.handler
 
 server:
-  port: 8080
+  port: 8088
   servlet:
     context-path: /
     encoding:
@@ -64,7 +64,7 @@ spring:
           merge:
             entity_copy_observer: allow
   kafka:
-    bootstrap-servers: 192.168.43.227:9092
+    bootstrap-servers: 127.0.0.1:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -74,5 +74,5 @@ spring:
       enable-auto-commit: false
     listener:
       ack-mode: manual
-      type: batch
+      type: single
       concurrency: 2
